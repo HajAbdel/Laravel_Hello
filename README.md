@@ -36,7 +36,7 @@ cmd :
 php artisan make:model Product
 ```
 
-## Generate controller (in app/Http/Controllers/)
+## 5. Generate controller (in app/Http/Controllers/)
 
 - vide (sans méthodes par défaut)
 
@@ -81,14 +81,28 @@ class NomController extends Controller
 }
 ```
 
-## 5. Create migration file (in database/migrations/)
+## 6. Create migration file (in database/migrations/)
 
 cmd :
 ```bash
 php artisan make:migration create_products_table
 ```
 
-## generate all in one cmd : model + controller (with resources) + migration + factory + seeds
+## 7. Generate factory file of model (to generate fake data)
+
+cmd :
+```bash
+php artisan make:factory ProductFactory --model=Product
+```
+
+## 8. Generate seeder class (in database/seeders/ folder)
+
+cmd :
+```bash
+php artisan make:seeder ProductSeeder
+```
+
+## 4.5.6.7.8. Generate all in one cmd : model + controller (with resources) + migration + factory + seeds
 
 use : --all or -crmfs
 
@@ -97,21 +111,7 @@ cmd :
 php artisan make:model Product -crmfs
 ```
 
-## 6. Create factory file of model (to generate fake data)
-
-cmd :
-```bash
-php artisan make:factory ProductFactory --model=Product
-```
-
-## 7. Create seeder class (in database/seeders/ folder)
-
-cmd :
-```bash
-php artisan make:seeder ProductSeeder
-```
-
-## Add routes: (in routes/web.php)
+## 9. Add routes: (in routes/web.php)
 
 - get
 
@@ -142,7 +142,7 @@ html code :
 <a href="{{ route('dashboard') }}">Dashboard</a>
 ```
 
-## Generate a middleware (in app/Http/Middleware)
+## 10. Generate middleware (in app/Http/Middleware)
 
 cmd :
 ```bash
@@ -202,7 +202,7 @@ public function __construct()
 }
 ```
 
-## 6. Executes all pending migration files (Updates DB schema)
+## 11. Executes all pending migration files (Updates DB schema)
 
 cmd :
 ```bash 
@@ -230,7 +230,7 @@ cmd :
 php artisan migrate:fresh --seed
 ```
 
-## run the seeder :
+## 12. run the seeder :
 
 - Directly:
 
