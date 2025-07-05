@@ -262,3 +262,22 @@ public function run()
   ]);
 }
 ```
+
+
+# Empty Cache
+
+```bash
+php artisan cache:clear
+```
+
+```bash
+php artisan config:clear
+```
+
+```bash
+php artisan route:clear
+```
+
+```bash
+php artisan view:clear
+```
