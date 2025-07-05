@@ -81,68 +81,7 @@ class NomController extends Controller
 }
 ```
 
-## 6. Create migration file (in database/migrations/)
-
-cmd :
-```bash
-php artisan make:migration create_products_table
-```
-
-## 7. Generate factory file of model (to generate fake data)
-
-cmd :
-```bash
-php artisan make:factory ProductFactory --model=Product
-```
-
-## 8. Generate seeder class (in database/seeders/ folder)
-
-cmd :
-```bash
-php artisan make:seeder ProductSeeder
-```
-
-## 4.5.6.7.8. Generate all in one cmd : model + controller (with resources) + migration + factory + seeds
-
-use : --all or -crmfs
-
-cmd :
-```bash
-php artisan make:model Product -crmfs
-```
-
-## 9. Add routes: (in routes/web.php)
-
-- get
-
-code :
-```php
-Route::get('/products', [ProductController::class, 'index']);
-```
-
-- Route Groups + middleware
-
-code :
-```php
-Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::resource('posts', AdminPostController::class);
-});
-```
-
-- Route Naming
-
-code :
-```php
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-```
-Then use it in views:
-
-html code :
-```html
-<a href="{{ route('dashboard') }}">Dashboard</a>
-```
-
-## 10. Generate middleware (in app/Http/Middleware)
+## 6. Generate middleware (in app/Http/Middleware)
 
 cmd :
 ```bash
@@ -200,6 +139,67 @@ public function __construct()
 {
     $this->middleware('check.something');
 }
+```
+
+## 7. Create migration file (in database/migrations/)
+
+cmd :
+```bash
+php artisan make:migration create_products_table
+```
+
+## 8. Generate factory file of model (to generate fake data)
+
+cmd :
+```bash
+php artisan make:factory ProductFactory --model=Product
+```
+
+## 9. Generate seeder class (in database/seeders/ folder)
+
+cmd :
+```bash
+php artisan make:seeder ProductSeeder
+```
+
+## 4.5.7.8.9. Generate all in one cmd : model + controller (with resources) + migration + factory + seeds
+
+use : --all or -crmfs
+
+cmd :
+```bash
+php artisan make:model Product -crmfs
+```
+
+## 10. Add routes: (in routes/web.php)
+
+- get
+
+code :
+```php
+Route::get('/products', [ProductController::class, 'index']);
+```
+
+- Route Groups + middleware
+
+code :
+```php
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::resource('posts', AdminPostController::class);
+});
+```
+
+- Route Naming
+
+code :
+```php
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+```
+Then use it in views:
+
+html code :
+```html
+<a href="{{ route('dashboard') }}">Dashboard</a>
 ```
 
 ## 11. Executes all pending migration files (Updates DB schema)
