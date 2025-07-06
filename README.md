@@ -204,28 +204,27 @@ html code :
 
 ## 11. Executes all pending migration files (Updates DB schema)
 
-cmd :
+- Rolls back all migrations in reverse order, one by one.
+- it will drop only the tables created by your migrations.
+
 ```bash 
 php artisan migrate
 ```
 
 - undo the last migration
 
-cmd :
 ```bash
 php artisan migrate:rollback
 ```
 
 - Drop all tables, then re-runs all migrations from scratch
 
-cmd :
 ```bash
 php artisan migrate:fresh
 ```
 
 - drop all tables and re-runs migrations + run the DB seeders
 
-cmd :
 ```bash
 php artisan migrate:fresh --seed
 ```
@@ -234,26 +233,22 @@ php artisan migrate:fresh --seed
 
 - Directly:
 
-cmd :
 ```bash
 php artisan db:seed --class=ProductSeeder
 ```
 
 - Automatically :
 
-cmd :
 ```bash
 php artisan migrate:fresh --seed
 ```
 or
 
-cmd :
 ```bash
 php artisan db:seed
 ```
 but you must add seeder class to database/seeders/DatabaseSeeder.php
 
-code:
 ```php
 public function run()
 {
