@@ -204,30 +204,56 @@ html code :
 
 ## 11. Executes all pending migration files (Updates DB schema)
 
-- Rolls back all migrations in reverse order, one by one.
-- it will drop only the tables created by your migrations.
+### migrate :
 
 ```bash 
 php artisan migrate
 ```
 
-- undo the last migration
+- Migrations are files that define how your database should be structured.
+- it create / updates the DB tables based on the instructions in the database/migrations/ folder.
+- usually: Creates a table ; Adds or modifies columns ; Adds indexes or foreign keys
+
+- process :
+  - Laravel looks at the database/migrations/ folder
+  - Checks which migrations haven’t been run yet
+  - Executes them (creates or modifies tables)
+  - Marks them as “done” in the migrations table (so they won’t run again)
+
+
+### rollback :
+
+- Undo the last batch of migrations (step back) :
 
 ```bash
 php artisan migrate:rollback
 ```
 
-- Drop all tables, then re-runs all migrations from scratch
+### refresh :
+
+```bash
+php artisan migrate:refresh
+```
+
+- refresh :
+  - Rolls back all migrations
+  - Then re-runs them in order
+  - when want to reset the db structure without deleting all tables manually.
+  - keeps migrations table (which tracks what was run).
+--seed : to run the DB seeders
+
+### fresh :
 
 ```bash
 php artisan migrate:fresh
 ```
 
-- drop all tables and re-runs migrations + run the DB seeders
-
-```bash
-php artisan migrate:fresh --seed
-```
+- fresh :
+  - deletes everything 
+  - Drops all tables from the database
+  - Then runs all migrations from scratch
+  - used when when db is messy or corrupted & want to start clean, ignoring the migrations table
+--seed : to run the DB seeders
 
 ## 12. run the seeder :
 
